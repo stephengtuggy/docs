@@ -17,7 +17,7 @@ cluster.
 Shards should be deployed as a :term:`replica set` to provide redundancy and
 high availability.
 
-Uesrs, clients, or applications should only directly connect to a shard to
+Users, clients, or applications should only directly connect to a shard to
 perform local administrative and maintenance operations.
 
 Performing queries on a single shard only returns a subset of data. Connect to
@@ -34,9 +34,15 @@ write operations.
 Primary Shard
 -------------
 
-Every database has a :term:`primary shard` that holds all the un-sharded
-collections for a database. The primary shard has no relation to the
-:term:`primary` in a replica set.
+Each database in a sharded cluster has a :term:`primary shard` that holds all
+the un-sharded collections for that database. Each database has its own
+primary shard. The primary shard has no relation to the :term:`primary` in a
+replica set.
+
+The :program:`mongos` selects the primary shard when creating a new database
+by picking the shard in the cluster that has the least amount of data.
+:program:`mongos` uses the ``totalSize`` field returned by the
+:dbcommand:`listDatabase` command as a part of the selection criteria.
 
 .. include:: /images/sharded-cluster-primary-shard.rst
 
@@ -50,7 +56,7 @@ shard.
 
 When you deploy a new :term:`sharded cluster` with shards that were
 previously used as replica sets, all existing databases
-continue to reside on their original shard. Databases created
+continue to reside on their original replica sets. Databases created
 subsequently may reside on any shard in the cluster.
 
 Shard Status
@@ -60,7 +66,6 @@ Use the :method:`sh.status()` method in the :program:`mongo` shell to
 see an overview of the cluster. This reports includes which shard is
 primary for the database and the :term:`chunk` distribution across the
 shards. See :method:`sh.status()` method for more details.
-
 
 Sharded Cluster Security
 ------------------------

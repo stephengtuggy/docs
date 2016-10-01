@@ -177,8 +177,14 @@ Deployment Management Actions
 
 .. authaction:: inprog
 
-   User can use the :method:`db.currentOp()` method to return pending and
-   active operations. Apply this action to the ``cluster`` resource.
+   User can use the :method:`db.currentOp()` method to return
+   information on pending and active operations. Apply this action to
+   the ``cluster`` resource.
+
+   .. versionchanged:: 3.2.9
+      Even without the :authaction:`inprog` privilege, on
+      :program:`mongod` instances, users can view their own operations
+      by running ``db.currentOp( { "$ownOps": true } )``.
 
 .. authaction:: invalidateUserCache
 
@@ -189,6 +195,11 @@ Deployment Management Actions
 
    User can perform the :method:`db.killOp()` method. Apply this action to
    the ``cluster`` resource.
+
+   .. versionchanged:: 3.2.9
+      Even without the :authaction:`killop` privilege, on
+      :program:`mongod` instances, users can kill
+      their own operations.
 
 .. authaction:: planCacheRead
 
@@ -221,6 +232,14 @@ Replication Actions
 
    User can configure a replica set. Apply this action to the ``cluster``
    resource.
+
+.. authaction:: replSetGetConfig
+
+   User can view a replica set's configuration. Provides access to the
+   :dbcommand:`replSetGetConfig` command and :method:`rs.conf()` helper
+   method.
+   
+   Apply this action to the ``cluster`` resource.
 
 .. authaction:: replSetGetStatus
 
@@ -507,10 +526,10 @@ Internal Actions
 
 .. authaction:: anyAction
 
-   Allows any action on a resource. **Do not** assign this action except
-   for exceptional circumstances.
+   Allows any action on a resource. **Do not** assign this action unless
+   it is absolutely necessary.
 
 .. authaction:: internal
 
-   Allows internal actions. **Do not** assign this action except for
-   exceptional circumstances.
+   Allows internal actions. **Do not** assign this action unless
+   it is absolutely necessary.

@@ -107,7 +107,7 @@ title: "Additional Resource"
 append:
   - /data-center-awareness.txt
   - /core/operational-segregation.txt
-  - /core/tag-aware-sharding.txt
+  - /core/zone-sharding.txt
   - /tutorial/administer-shard-tags.txt
   - /core/replica-set-architecture-geographically-distributed.txt
 content: |
@@ -278,7 +278,6 @@ append:
   - /tutorial/backup-sharded-cluster-with-filesystem-snapshots.txt
   - /tutorial/backup-sharded-cluster-with-database-dumps.txt
   - /tutorial/backup-with-filesystem-snapshots.txt
-  - /tutorial/backup-small-sharded-cluster-with-mongodump.txt
 content: |
   See also |mms-home| for seamless automation, backup, and monitoring.
 

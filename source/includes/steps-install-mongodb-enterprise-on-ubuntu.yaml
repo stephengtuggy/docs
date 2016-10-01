@@ -16,19 +16,19 @@ action:
 
       .. code-block:: sh
 
-          echo "deb http://repo.mongodb.com/apt/ubuntu precise/mongodb-enterprise/stable multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list
+          echo "deb http://repo.mongodb.com/apt/ubuntu precise/mongodb-enterprise/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list
 
       Ubuntu 14.04
 
       .. code-block:: sh
 
-         echo "deb http://repo.mongodb.com/apt/ubuntu trusty/mongodb-enterprise/stable multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list
+         echo "deb http://repo.mongodb.com/apt/ubuntu trusty/mongodb-enterprise/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list
 
       Ubuntu 16.04
 
       .. code-block:: sh
 
-         echo "deb http://repo.mongodb.com/apt/ubuntu xenial/mongodb-enterprise/stable multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list
+         echo "deb http://repo.mongodb.com/apt/ubuntu xenial/mongodb-enterprise/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list
 
   - pre: |
       If you'd like to install MongoDB Enterprise packages from a
@@ -86,4 +86,9 @@ post: |
   Versions of the MongoDB packages before 2.6 use a different repository
   location. Refer to the version of the documentation appropriate for
   your MongoDB version.
+---
+stepnum: 5
+source:
+  file: steps-install-mongodb-on-ubuntu.yaml
+  ref: create-systemd
 ...

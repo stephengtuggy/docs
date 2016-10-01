@@ -15,15 +15,21 @@ Definition
 
 .. dbcommand:: create
 
-   Explicitly creates a collection. :dbcommand:`create` has the
-   following form:
+   Explicitly creates a collection or views. :dbcommand:`create` has
+   the following form:
 
-   .. versionchanged:: 3.2
+   .. versionchanged:: 3.4
+      Added options:
+
+      - ``viewOn`` and ``pipeline`` to support creation of views. See
+        also :method:`db.createView()`.
+
+      - ``collation``.
 
    .. code-block:: javascript
 
       {
-        create: <collection_name>,
+        create: <collection or view name>,
         capped: <true|false>,
         autoIndexId: <true|false>,
         size: <max_size>,
@@ -33,7 +39,10 @@ Definition
         validator: <document>,
         validationLevel: <string>,
         validationAction: <string>,
-        indexOptionDefaults: <document>
+        indexOptionDefaults: <document>,
+        viewOn: <source>, 
+        pipeline: <pipeline>,
+        collation: <document>
       }
 
    :dbcommand:`create` has the following fields:
@@ -52,6 +61,7 @@ completed. The write lock for this operation is typically short
 lived. However, allocations for large capped collections may take
 longer.
 
+
 Examples
 --------
 
@@ -65,6 +75,91 @@ the command in the following form:
 
    db.runCommand( { create: "collection", capped: true, size: 64 * 1024 } )
 
+Create a View
+~~~~~~~~~~~~~
+
+.. versionadded:: 3.4
+
+To create a :doc:`view </core/views>` using the :dbcommand:`create`
+command, use the following syntax:
+
+.. code-block:: javascript
+
+   db.runCommand( { create: <view>, viewOn: <source>, pipeline: <pipeline> } )
+
+For example, given a collection ``survey`` with the following documents:
+
+.. code-block:: javascript
+
+   { _id: 1, empNumber: "abc123", feedback: { management: 3, environment: 3 }, department: "A" }
+   { _id: 2, empNumber: "xyz987", feedback: { management: 2, environment: 3 }, department: "B" }
+   { _id: 3, empNumber: "ijk555", feedback: { management: 3, environment: 4 }, department: "A" }
+
+The following operation creates a ``managementRatings`` view with the
+``_id``, ``feedback.management``, and ``department`` fields:
+
+.. code-block:: javascript
+
+   db.runCommand ( {
+      create: "managementFeedback",
+      viewOn: "survey",
+      pipeline: [ { $project: { "management": "$feedback.management", department: 1 } } ]
+   } )
+
+.. seealso:: :method:`db.createView()`
+
+.. _create-collation-example:
+
+Specify Collation
+~~~~~~~~~~~~~~~~~
+
+You can specify :ref:`collation <collation>` at the collection level.
+For example, the following operation creates a collection, specifying a
+collation for the collection (See
+:ref:`collation-document-fields` for descriptions of the collation fields):
+
+.. code-block:: javascript
+
+   db.runCommand ( {
+      create: "myColl",
+      collation: { locale: "fr" }
+   });
+
+This collation will be used by indexes and operations that support
+collation unless they explicitly specify a different collation. For
+example, insert the following documents into ``myColl``:
+
+.. code-block:: javascript
+
+   { _id: 1, category: "café" }
+   { _id: 2, category: "cafe" }
+   { _id: 3, category: "cafE" }
+
+The following operation uses the collection's collation:
+
+.. code-block:: javascript
+
+   db.myColl.find().sort( { category: 1 } )
+
+The operation returns documents in the following order:
+
+.. code-block:: javascript
+
+   { "_id" : 2, "category" : "cafe" }
+   { "_id" : 3, "category" : "cafE" }
+   { "_id" : 1, "category" : "café" }
+
+The same operation on a collection that uses simple binary collation
+(i.e. no specific collation set) returns documents in the following order:
+
+.. code-block:: javascript
+
+   { "_id" : 3, "category" : "cafE" }
+   { "_id" : 2, "category" : "cafe" }
+   { "_id" : 1, "category" : "café" }
+
+
+   
 Specify Storage Engine Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

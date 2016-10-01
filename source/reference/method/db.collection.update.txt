@@ -134,6 +134,8 @@ The update creates the new document with either:
   operator <update-operators>` expressions. The update creates a base
   document from the equality clauses in the ``<query>`` parameter, and
   then applies the update expressions from the ``<update>`` parameter.
+  :doc:`Comparison </reference/operator/query>` operations from the
+  ``<query>`` will not be included in the new document.
 
 If ``upsert`` is ``true`` and there are documents that match the query
 criteria, :method:`~db.collection.update()` performs an update.
@@ -517,6 +519,30 @@ result in the insertion of a document using the fields from both the
 
 For more information on ``upsert`` option and the inserted document,
 :ref:`upsert-parameter`.
+
+Specify Collation
+~~~~~~~~~~~~~~~~~
+
+.. include:: /includes/extracts/collation-versionadded.rst
+
+A collection ``myColl`` has the following documents:
+
+.. code-block:: javascript
+
+   { _id: 1, category: "café", status: "A" }
+   { _id: 2, category: "cafe", status: "a" }
+   { _id: 3, category: "cafE", status: "a" }
+
+The following operation includes the :ref:`collation <collation>`
+option:
+
+.. code-block:: javascript
+
+   db.myColl.update(
+      { category: "cafe" },
+      { $set: { status: "Updated" } },
+      { collation: { locale: "fr", strength: 1 } }
+   );
 
 .. _writeresults-update:
 

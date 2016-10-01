@@ -1,0 +1,204 @@
+# - 'before-<branch>': bit of a misnomer -- it is up to and including
+#                      the branch specified
+#
+from: /core/views
+to: /core/databases-and-collections
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/method/db.createView
+to: /reference/method/db.createCollection
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: '/core/zone-sharding'
+to: '/core/tag-aware-sharding'
+type: 'redirect'
+code: 301
+outputs:
+  - 'before-v3.2'
+---
+from: '/tutorial/manage-shard-zone'
+to: '/tutorial/administer-shard-tags'
+type: 'redirect'
+code: 301
+outputs:
+  - 'before-v3.2'
+---
+from: '/core/tag-aware-sharding'
+to: '/core/zone-sharding'
+type: 'redirect'
+code: 301
+outputs:
+  - 'after-v3.2'
+---
+from: '/tutorial/administer-shard-tags'
+to: '/tutorial/manage-shard-zone'
+type: 'redirect'
+code: 301
+outputs:
+  - 'after-v3.2'
+---
+from: /reference/method/cursor.collation
+to: /reference/method/cursor.sort
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/method/Bulk.find.collation
+to: /reference/method/Bulk.find
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/bson-type-comparison-order
+to: /reference/bson-types
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /release-notes/3.3-dev-series-collation
+to: /reference/collation
+type: 'redirect'
+code: 303
+outputs:
+  - { 'manual': 'https://docs.mongodb.com/master' }
+  - { 'master': 'https://docs.mongodb.com/master' }
+---
+from: /release-notes/3.3-dev-series
+to: /release-notes/3.4
+type: 'redirect'
+code: 303
+outputs:
+  - { 'manual': 'https://docs.mongodb.com/master' }
+  - { 'master': 'https://docs.mongodb.com/master' }
+---
+from: /release-notes/3.3-dev-series-compatibility
+to: /release-notes/3.4-compatibility
+type: 'redirect'
+code: 303
+outputs:
+  - { 'manual': 'https://docs.mongodb.com/master' }
+  - { 'master': 'https://docs.mongodb.com/master' }
+---
+from: /release-notes/3.3-dev-series-reference
+to: /release-notes/3.4-reference
+type: 'redirect'
+code: 303
+outputs:
+  - { 'manual': 'https://docs.mongodb.com/master' }
+  - { 'master': 'https://docs.mongodb.com/master' }
+---
+from: /release-notes/3.4-compatibility
+to: /release-notes/
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /release-notes/3.4
+to: /release-notes/
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /release-notes/3.4-compatibility
+to: /release-notes/
+type: 'redirect'
+code: 303
+outputs:
+   - 'before-v3.2'
+---
+from: /release-notes/3.4-reference
+to: /release-notes/
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/collation
+to: /reference/bson-types
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/indexOfBytes
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/reverseArray
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/range
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/type
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/substrBytes
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/substrCP
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/strLenBytes
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/strLenCP
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/operator/aggregation/reduce
+to: /reference/operator/aggregation
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+---
+from: /reference/program/mongoreplay
+to: /reference/program
+type: 'redirect'
+code: 303
+outputs:
+  - 'before-v3.2'
+...
+

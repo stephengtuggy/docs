@@ -911,8 +911,107 @@ output:
     dpi: 72
     width: 700
 ---
-name: sharded-cluster-tag-aware
-alt: "Diagram of tag-aware data distribution"
+name: sharded-cluster-zones
+alt: "Diagram of data distribution based on zones in a sharded cluster"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharding-segmenting-data-by-location-overview
+alt: "Diagram geo distribution based on zones"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharding-segmenting-data-by-location-architecture
+alt: "Diagram of zones used for supporting geo distribution architecture"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharding-segmenting-shards-tags
+alt: "Diagram of zones used for supporting data segmentation"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharding-segmenting-shards-overview
+alt: "Overview of zones used for supporting data segmentation"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharding-segmenting-shards-architecture
+alt: "Diagram of Data Segmentation Architecture using zones"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharding-tiered-slas-overview
+alt: "Diagram of sharded cluster architecture for tiered SLA"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharding-tiered-slas-architecture
+alt: "Diagram of sharded cluster architecture for tiered SLA"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharding-tiered-slas-tags
+alt: "Diagram of sharded cluster architecture for tiered SLA"
+output:
+  - type: print
+    tag: 'print'
+    dpi: 300
+    width: 900
+  - type: web
+    dpi: 72
+    width: 700
+---
+name: sharded-cluster-high-availability-architecture
+alt: "Diagram of sharded cluster architecture for high availability"
 output:
   - type: print
     tag: 'print'

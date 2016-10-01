@@ -12,6 +12,7 @@ theme:
   jira: 'DOCS'
   sitename: 'MongoDB Docs'
   nav_excluded:
+    - /administration
     - /administration/production-checklist
     - /administration/indexes-management
     - /aggregation
@@ -23,6 +24,7 @@ theme:
     - /core/auditing
     - /core/authentication
     - /core/authorization
+    - /core/backups
     - /core/databases-and-collections
     - /core/geohaystack
     - /core/index-single
@@ -38,6 +40,7 @@ theme:
     - /core/journaling
     - /core/kerberos
     - /core/map-reduce
+    - /core/operational-segregation
     - /core/replica-set-architectures
     - /core/replica-set-high-availability
     - /core/replica-set-members
@@ -53,6 +56,7 @@ theme:
     - /products/bi-connector
     - /reference/command
     - /text-search
+    - /tutorial/manage-the-database-profiler
     - /core/index-text
     - /reference/indexes
     - /reference/method
@@ -69,14 +73,16 @@ theme:
     - /release-notes/2.8
     - /release-notes/3.0
     - /release-notes/3.2
+    - /release-notes/3.4
     - /security
     - /sharding
-    - /core/tag-aware-sharding
+    - /core/zone-sharding
     - /core/hashed-sharding
     - /core/ranged-sharding
     - /storage
     - /tutorial/change-sharded-cluster-wiredtiger
     - /tutorial/query-documents
+    - /tutorial/enable-authentication
 sidebars:
   '**':
     - 'pagenav.html'

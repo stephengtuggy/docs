@@ -1592,6 +1592,18 @@ description: |
   .. include:: /includes/fact-enterprise-only-admonition.rst
 ---
 program: conf
+name: security.transitionToAuth
+directive: setting
+type: boolean
+default: false
+inherit:
+  name: transitionToAuth
+  program: mongod
+  file: options-mongod.yaml
+replacement:
+  program: ":program:`mongod` or :program:`mongos`"
+---
+program: conf
 name: security.encryptionCipherMode
 directive: setting
 type:  string

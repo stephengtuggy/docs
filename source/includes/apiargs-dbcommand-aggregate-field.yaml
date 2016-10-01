@@ -51,11 +51,14 @@ description: |
   Specify a document that contains options that control the creation
   of the cursor object.
 
+  .. versionchanged:: 3.4
+
+     .. include:: /includes/deprecation-aggregate-wo-cursor.rst
+
   .. versionadded:: 2.6
 interface: dbcommand
 name: cursor
 operation: aggregate
-optional: true
 position: 5
 type: document
 ---
@@ -89,4 +92,19 @@ arg_name: field
 interface: dbcommand
 operation: aggregate
 position: 7
+---
+name: collation
+type: document
+optional: true
+description: |
+   {{space}}
+
+   .. include:: /includes/extracts/collation-option.rst
+
+arg_name: field
+interface: dbcommand
+operation: aggregate
+position: 8
+replacement:
+   space: ""
 ...
